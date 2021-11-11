@@ -9,7 +9,7 @@ const createCards = (data) => {
 
   const cardImg = document.createElement("img");
   cardImg.classList.add("challenge-picture");
-  cardImg.src = "./images/challenge.png";
+  cardImg.src = `${data.image}`;
   cardItem.append(cardImg);
 
   const cardTitle = document.createElement("h3");
@@ -45,7 +45,7 @@ const createCards = (data) => {
   cardRating.append(ratingStar4);
 
   const allStars = document.querySelectorAll(".challenge-rating-star");
-
+  // Highest rating = 5
   for (let i = 0; i < 5; i++) {
     if (i < data.rating) {
       allStars.item(target).classList.add("on");
@@ -57,7 +57,7 @@ const createCards = (data) => {
 
   const cardPlayers = document.createElement("small");
   cardPlayers.classList.add("challenge-size");
-  cardPlayers.innerHTML = `${data.minPlayers}-${data.maxPlayers} participants`;
+  cardPlayers.innerHTML = `${data.minParticipants}-${data.maxParticipants} participants`;
   cardMeta.append(cardPlayers);
 
   // Meta Container ---
