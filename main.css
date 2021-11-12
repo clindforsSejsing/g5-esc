@@ -575,3 +575,118 @@ img {
     grid-column: 10/12;
   }
 }
+
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin: 2rem;
+}
+
+.filterToggle {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+.filterToggleBtn {
+  color: #36769d;
+  border: 2px solid;
+  border-radius: 4px;
+  padding: 0.5em 1em;
+  cursor: pointer;
+}
+
+.filterBox {
+  display: block;
+  position: relative;
+  max-width: 1080px;
+  margin: 1rem auto;
+  border: 2px solid black;
+}
+
+.filterHide {
+  display: none;
+}
+
+.filterCloseBtn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 1em;
+  cursor: pointer;
+}
+
+h3 {
+  margin: 1rem;
+  display: block;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.allFilters {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+  margin: 1rem;
+}
+
+h4 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.byType {
+  grid-column: 1/4;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.75rem;
+}
+
+.byRating {
+  grid-column: 5/9;
+}
+.byRating .byRatingStars {
+  display: flex;
+  flex-direction: row;
+}
+.byRating .byRatingStars ul {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+}
+.byRating .byRatingStars ul li {
+  list-style-type: none;
+  color: red;
+  font-size: 1rem;
+}
+.byRating .byRatingStars small {
+  align-self: center;
+  padding: 0.5em;
+}
+
+.byTags {
+  grid-column: 10/13;
+}
+.byTags span {
+  font-size: 0.75rem;
+  color: #b6bdb5;
+  font-weight: bold;
+  border: 2px solid;
+  border-radius: 2rem;
+  padding: 0.5em;
+  line-height: 2.5em;
+  white-space: nowrap;
+}
+
+.byKeyword {
+  grid-column: 5/9;
+}
+.byKeyword h3 {
+  margin: 0 0 0.5em 0;
+}
+.byKeyword input {
+  height: 2em;
+  width: 75%;
+}
+
+/*# sourceMappingURL=main.css.map */
