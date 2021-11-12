@@ -1,5 +1,6 @@
 // Calling DOM & Global Variables
 let target = 0;
+let starId = 0;
 const challengeList = document.querySelector(".challenges-list");
 
 const createCards = (data) => {
@@ -69,8 +70,10 @@ const createCards = (data) => {
 
   const cardCta = document.createElement("a");
   cardCta.classList.add("challenge-cta");
+  cardCta.setAttribute("id", starId);
   cardCta.innerHTML = "Book this room";
   cardItem.append(cardCta);
+  starId++;
 };
 
 export { createCards };
