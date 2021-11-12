@@ -1,6 +1,8 @@
-/* Probably need a better solution for rating-stars */
-
+// Calling DOM & Global Variables
+let target = 0;
+let starId = 0;
 const challengeList = document.querySelector(".challenges-list");
+
 const createCards = (data) => {
   const cardItem = document.createElement("li");
   cardItem.classList.add("challenges-item");
@@ -8,12 +10,12 @@ const createCards = (data) => {
 
   const cardImg = document.createElement("img");
   cardImg.classList.add("challenge-picture");
-  cardImg.src = "./images/challenge.png";
+  cardImg.src = `${data.image}`;
   cardItem.append(cardImg);
 
   const cardTitle = document.createElement("h3");
   cardTitle.classList.add("challenge-title");
-  cardTitle.innerHTML = `${data.title}`;
+  cardTitle.innerHTML = `${data.title}(${data.type})`;
   cardItem.append(cardTitle);
 
   // --- Meta Container
@@ -26,23 +28,16 @@ const createCards = (data) => {
   cardRating.classList.add("challenge-rating");
   cardMeta.append(cardRating);
 
-  // Find a better solution
-
   const ratingStar0 = document.createElement("li");
   ratingStar0.classList.add("challenge-rating-star");
-  ratingStar0.classList.add("on");
   const ratingStar1 = document.createElement("li");
   ratingStar1.classList.add("challenge-rating-star");
-  ratingStar1.classList.add("on");
   const ratingStar2 = document.createElement("li");
   ratingStar2.classList.add("challenge-rating-star");
-  ratingStar2.classList.add("on");
   const ratingStar3 = document.createElement("li");
   ratingStar3.classList.add("challenge-rating-star");
-  ratingStar3.classList.add("on");
   const ratingStar4 = document.createElement("li");
   ratingStar4.classList.add("challenge-rating-star");
-  ratingStar4.classList.add("off");
 
   cardRating.append(ratingStar0);
   cardRating.append(ratingStar1);
@@ -50,9 +45,20 @@ const createCards = (data) => {
   cardRating.append(ratingStar3);
   cardRating.append(ratingStar4);
 
+  const allStars = document.querySelectorAll(".challenge-rating-star");
+  // Highest rating = 5
+  for (let i = 0; i < 5; i++) {
+    if (i < data.rating) {
+      allStars.item(target).classList.add("on");
+    } else {
+      allStars.item(target).classList.add("off");
+    }
+    target++;
+  }
+
   const cardPlayers = document.createElement("small");
   cardPlayers.classList.add("challenge-size");
-  cardPlayers.innerHTML = `${data.minPlayers}-${data.maxPlayers} participants`;
+  cardPlayers.innerHTML = `${data.minParticipants}-${data.maxParticipants} participants`;
   cardMeta.append(cardPlayers);
 
   // Meta Container ---
@@ -64,8 +70,10 @@ const createCards = (data) => {
 
   const cardCta = document.createElement("a");
   cardCta.classList.add("challenge-cta");
+  cardCta.setAttribute("id", starId);
   cardCta.innerHTML = "Book this room";
   cardItem.append(cardCta);
+  starId++;
 };
 
 export { createCards };

@@ -11,6 +11,7 @@
 
 .challenges-list {
   display: flex;
+  flex-wrap: wrap;
   width: 300%;
 
   @include desktop {
