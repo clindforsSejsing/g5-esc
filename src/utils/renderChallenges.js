@@ -10,15 +10,19 @@ const sortedByRating = [...dataChallenges].sort((a, b) => {
 });
 
 const renderAllRooms = (roomData) => {
-  roomData.forEach((rooms) => {
-    createCards(rooms);
-  });
+  for (let i = 0; i < roomData.length; i++) {
+    createCards(roomData[i]);
+    const allItems = document.querySelectorAll(".challenge-cta");
+    allItems.item(i).setAttribute("id", i);
+  }
 };
-
 const renderTopThree = (sortedData) => {
-  sortedData.slice(0, 3).forEach((item) => {
-    createCards(item);
-  });
+  const topThree = sortedData.slice(0, 3);
+  for (let i = 0; i < topThree.length; i++) {
+    createCards(topThree[i]);
+    const allItems = document.querySelectorAll(".challenge-cta");
+    allItems.item(i).setAttribute("id", i);
+  }
 };
 
 export { sortedByRating, renderTopThree, renderAllRooms };

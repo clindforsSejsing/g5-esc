@@ -287,6 +287,7 @@ img {
 
 .challenges-list {
   display: flex;
+  flex-wrap: wrap;
   width: 300%;
 }
 @media screen and (min-width: 960px) {
