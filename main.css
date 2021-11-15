@@ -358,7 +358,8 @@ img {
     font-size: 1rem;
     font-weight: bold;
   }
-  .close:hover, .close:focus {
+  .close:hover,
+  .close:focus {
     color: #888;
     text-decoration: none;
     cursor: pointer;
@@ -410,7 +411,7 @@ img {
   max-width: 85vw;
 }
 
-.challenges-item>*:not(img) {
+.challenges-item > *:not(img) {
   margin: 0 1rem;
 }
 
@@ -664,7 +665,7 @@ img {
   margin: 0 1rem;
 }
 
-.footer .footer-content>div {
+.footer .footer-content > div {
   margin: 0 0 2rem;
 }
 
@@ -828,8 +829,5 @@ h4 {
   height: 2em;
   width: 75%;
 }
-<<<<<<< HEAD
-=======
 
 /*# sourceMappingURL=main.css.map */
->>>>>>> 84694ddfcaf5c82c671c75df8f57ec6337ddd78e

@@ -1,6 +1,4 @@
-import {
-  cardCtaBtnClick,
-} from "./booking.js";
+import { cardCtaBtnClick } from "./booking.js";
 
 // Calling DOM & Global Variables
 let target = 0;
@@ -74,7 +72,9 @@ const createCards = (data) => {
   const cardCta = document.createElement("a");
   cardCta.classList.add("challenge-cta");
   cardCta.innerHTML = "Book this room";
-  cardCta.addEventListener('click', function () { cardCtaBtnClick(cardItem) });// onclick btn
+  cardCta.addEventListener("click", () => {
+    cardCtaBtnClick(data.title, data.minParticipants, data.maxParticipants);
+  });
   cardItem.append(cardCta);
 };
 export { createCards };
