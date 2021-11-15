@@ -72,5 +72,4 @@ const createCards = (data) => {
   cardCta.innerHTML = "Book this room";
   cardItem.append(cardCta);
 };
-
 export { createCards };
