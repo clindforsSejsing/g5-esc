@@ -1,17 +1,14 @@
-import {
-  sortedByRating,
-  renderAllRooms,
-  renderTopThree,
-} from "./src/utils/renderChallenges.js";
+import { Render } from "./src/utils/renderChallenges.js";
+import { filterSolutions } from "./src/utils/filterData.js";
 import { loadData } from "./src/utils/fetch.js";
 
 const challenges = await loadData();
 
-window.onload = () => {
+window.onload = async () => {
   if (window.location.href.match("challenges.html")) {
-    renderAllRooms(challenges);
+    Render.allRooms(challenges);
   } else {
-    renderTopThree(sortedByRating);
+    Render.threeTopRating(filterSolutions.topThree(challenges));
   }
 };
 onload();
