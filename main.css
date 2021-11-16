@@ -312,6 +312,7 @@ img {
 
 .challenges-list {
   display: flex;
+  flex-wrap: wrap;
   width: 300%;
 }
 
@@ -357,7 +358,8 @@ img {
     font-size: 1rem;
     font-weight: bold;
   }
-  .close:hover, .close:focus {
+  .close:hover,
+  .close:focus {
     color: #888;
     text-decoration: none;
     cursor: pointer;
@@ -409,7 +411,7 @@ img {
   max-width: 85vw;
 }
 
-.challenges-item>*:not(img) {
+.challenges-item > *:not(img) {
   margin: 0 1rem;
 }
 
@@ -663,7 +665,7 @@ img {
   margin: 0 1rem;
 }
 
-.footer .footer-content>div {
+.footer .footer-content > div {
   margin: 0 0 2rem;
 }
 

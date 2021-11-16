@@ -1,24 +1,21 @@
-import { loadData } from "./fetch.js";
 import { createCards } from "../modules/createCards.js";
 
-const dataChallenges = await loadData();
+const Render = (() => {
+  const allRooms = (roomData) => {
+    roomData.forEach((rooms) => {
+      createCards(rooms);
+    });
+  };
+  const threeTopRating = (sortedData) => {
+    sortedData.slice(0, 3).forEach((item) => {
+      createCards(item);
+    });
+  };
 
-// Filtering and rendering cards for Homepage and Challenges page.
+  return {
+    allRooms,
+    threeTopRating,
+  };
+})();
 
-const sortedByRating = [...dataChallenges].sort((a, b) => {
-  return b.rating - a.rating;
-});
-
-const renderAllRooms = (roomData) => {
-  roomData.forEach((rooms) => {
-    createCards(rooms);
-  });
-};
-
-const renderTopThree = (sortedData) => {
-  sortedData.slice(0, 3).forEach((item) => {
-    createCards(item);
-  });
-};
-
-export { sortedByRating, renderTopThree, renderAllRooms };
+export { Render };

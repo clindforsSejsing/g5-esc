@@ -1,17 +1,14 @@
-import {
-  sortedByRating,
-  renderAllRooms,
-  renderTopThree,
-} from "./src/utils/renderChallenges.js";
+import { Render } from "./src/utils/renderChallenges.js";
+import { filterSolutions } from "./src/utils/filterData.js";
 import { loadData } from "./src/utils/fetch.js";
 
 const challenges = await loadData();
 
-window.onload = () => {
-  if (window.location.href.match("g5-esc/challenges.html")) {
-    renderAllRooms(challenges);
+window.onload = async () => {
+  if (window.location.href.match("challenges.html")) {
+    Render.allRooms(challenges);
   } else {
-    renderTopThree(sortedByRating);
+    Render.threeTopRating(filterSolutions.topThree(challenges));
   }
 };
 onload();

@@ -1,10 +1,7 @@
-import {
-  cardCtaBtnClick,
-} from "./booking.js";
+import { cardCtaBtnClick } from "./booking.js";
 
 // Calling DOM & Global Variables
 let target = 0;
-let starId = 0;
 const challengeList = document.querySelector(".challenges-list");
 
 const createCards = (data) => {
@@ -49,7 +46,7 @@ const createCards = (data) => {
   cardRating.append(ratingStar3);
   cardRating.append(ratingStar4);
 
-  const allStars = document.querySelectorAll(".challenge-rating-star");
+  /*   const allStars = document.querySelectorAll(".challenge-rating-star");
   // Highest rating = 5
   for (let i = 0; i < 5; i++) {
     if (i < data.rating) {
@@ -58,7 +55,7 @@ const createCards = (data) => {
       allStars.item(target).classList.add("off");
     }
     target++;
-  }
+  } */
 
   const cardPlayers = document.createElement("small");
   cardPlayers.classList.add("challenge-size");
@@ -74,11 +71,10 @@ const createCards = (data) => {
 
   const cardCta = document.createElement("a");
   cardCta.classList.add("challenge-cta");
-  cardCta.setAttribute("id", starId);
   cardCta.innerHTML = "Book this room";
-  cardCta.addEventListener('click', function () { cardCtaBtnClick(cardItem) });// onclick btn
+  cardCta.addEventListener("click", () => {
+    cardCtaBtnClick(data.title, data.minParticipants, data.maxParticipants);
+  });
   cardItem.append(cardCta);
-  starId++;
 };
-
 export { createCards };

@@ -32,11 +32,11 @@
                     <div class="byType">
                         <h4>By Type</h3>
                         <div>
-                            <input type="checkbox" id="includeOnline" name="includeOnline">
+                            <input type="checkbox" class="checkboxes" value="online" id="includeOnline" name="includeOnline">
                             <label for="includeOnline">Include online challanges</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="includeOnsite" name="includeOnsite">
+                            <input type="checkbox" class="checkboxes" value="onsite" id="includeOnsite" name="includeOnsite">
                             <labal for="includeOnsite">Include on-site challanges</labal>
                         </div>
                     </div>
@@ -83,7 +83,16 @@
         <ul class="challenges-list">
 
     </section>
-
+    <div id="myModal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h1 id="bookThis"></h1>
+        <p>What date would you like to come</p>
+        <p id="dateText">Date</p>
+        <input type="date" id="date" value="">
+        <button id="searchTimes-btn">Search available times</button>
+      </div>
+    </div>
 
 
     <footer class="footer">
