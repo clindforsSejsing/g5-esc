@@ -12,3 +12,5 @@ window.onload = async () => {
   }
 };
 onload();
+
+export { challenges };
