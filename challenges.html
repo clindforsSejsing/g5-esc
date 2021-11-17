@@ -62,12 +62,7 @@
                     </div>
                     <div class="byTags">
                         <h4>By tags</h3>
-                        <span>Web</span>
-                        <span>Linux</span>
-                        <span>Cryptography</span>
-                        <span>Coding</span>
-                        <span>Some other tag</span>
-                        <span>A final tag</span>
+                        <ul class="tagList"></ul>
                     </div>
                     <div class="byKeyword">
                         <h3>Or type to search for keyword</h3>
@@ -136,6 +131,7 @@
           document.querySelector(".main-nav").classList.toggle("open");
         });
     </script>
-    <script src="src/modules/filterToggle.js"></script>
+    <script type="module" src="src/modules/filterToggle.js"></script>
+    <script type="module" src="src/modules/createTags.js"></script>
   </body>
 </html>
