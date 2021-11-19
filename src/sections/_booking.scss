@@ -1,0 +1,76 @@
+@include desktop {
+  #myModal {
+    bottom: 0;
+    color: #011827;
+    display: none;
+    height: 100%;
+    left: 0;
+    margin: auto;
+    margin-top: -1rem;
+    overflow: auto;
+    padding: 20px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+  }
+  .modal-content {
+    background-color: #fefefe;
+    border: 1px solid #888;
+    color: #011827;
+    height: 25rem;
+    margin: auto;
+    margin-top: 0.5rem;
+    padding: 20px;
+    width: 35rem;
+  }
+  .close {
+    color: #011827;
+    float: right;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  .close:hover,
+  .close:focus {
+    color: #888;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  #searchTimes-btn {
+    display: block;
+    margin-left: 25rem;
+    margin-top: 16rem;
+    background-color: #8acfe5;
+    padding: 0.5rem 1rem;
+    border-radius: 0.3rem;
+    color: 011827;
+    text-decoration: none;
+    font-size: 0.7rem;
+    font-weight: bold;
+  }
+  #bookThis {
+    font-size: 1rem;
+    margin-left: 1rem;
+    margin-top: 0.3rem;
+    padding-bottom: 1.2rem;
+  }
+  .modal-content p {
+    color: 011827;
+    font-size: 0.8rem;
+    margin-left: 1rem;
+    padding-bottom: 1rem;
+  }
+  #dateText {
+    color: 011827;
+    font-size: 0.7rem;
+    font-weight: bold;
+    margin: 0;
+    margin-left: 1rem;
+    padding-bottom: 0;
+  }
+  input {
+    margin-left: 1rem;
+    font-size: 1rem;
+  }
+}
