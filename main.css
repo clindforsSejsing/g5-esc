@@ -668,15 +668,25 @@ h4 {
 .byTags {
   grid-column: 10/13;
 }
-.byTags span {
+
+.byTags ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+.byTags ul li {
   font-size: 0.75rem;
   color: #b6bdb5;
   font-weight: bold;
   border: 2px solid;
   border-radius: 2rem;
   padding: 0.5em;
-  line-height: 2.5em;
+  margin: 0.1em;
   white-space: nowrap;
+  cursor: pointer;
+}
+.byTags ul .active {
+  background-color: #b6bdb5;
+  color: white;
 }
 
 .byKeyword {
