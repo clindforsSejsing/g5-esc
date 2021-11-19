@@ -54,7 +54,7 @@ searchTimesBtn.addEventListener("click", function () {
   getTimeSlots(userDate);
 });
 };
-
+//inhämta data
 async function getTimeSlots(wantedDate)
 {
   const response = await fetch ('https://lernia-sjj-assignments.vercel.app/api/booking/available-times?date=' + wantedDate);
