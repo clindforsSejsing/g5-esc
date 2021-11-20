@@ -14,5 +14,31 @@ const filterToggle = () => {
   filterToggle.addEventListener("click", toggleFilter);
   filterCloseBtn.addEventListener("click", toggleFilter);
 };
+// Rating
+const minRatingStars = document.querySelectorAll(".minRating > li");
+let maxRating = 0;
+let minRating = 0;
+minRatingStars.forEach((star, index) => {
+  star.addEventListener("click", () => {
+    minRatingStars.forEach((otherStars, otherIndex) => {
+      index >= otherIndex
+        ? otherStars.classList.add("active")
+        : otherStars.classList.remove("active");
+    });
+    minRating = index;
+  });
+});
 
-export { filterToggle };
+const maxRatingStars = document.querySelectorAll(".maxRating > li");
+
+maxRatingStars.forEach((star, index) => {
+  star.addEventListener("click", () => {
+    maxRatingStars.forEach((otherStars, otherIndex) => {
+      index >= otherIndex
+        ? otherStars.classList.add("active")
+        : otherStars.classList.remove("active");
+    });
+    maxRating = index;
+  });
+});
+export { filterToggle, maxRating, minRating };

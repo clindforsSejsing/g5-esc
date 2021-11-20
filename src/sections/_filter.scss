@@ -1,130 +1,132 @@
 h2 {
-    text-align: center;
-    font-size: 2rem;
-    margin: 2rem;
+  text-align: center;
+  font-size: 2rem;
+  margin: 2rem;
 }
 
 .filterToggle {
-    display: flex;
-    justify-content: center;
-    margin: 0;    
+  display: flex;
+  justify-content: center;
+  margin: 0;
 }
 
 .filterToggleBtn {
-    color: $c-blue;
-    border: 2px solid;
-    border-radius: 4px;
-    padding: 0.5em 1em;
-    cursor: pointer;
+  color: $c-blue;
+  border: 2px solid;
+  border-radius: 4px;
+  padding: 0.5em 1em;
+  cursor: pointer;
 }
 
 .filterBox {
-    display: block;
-    position: relative;
-    max-width: 1080px;
-    margin: 1rem auto;
-    border: 2px solid black;
+  display: block;
+  position: relative;
+  max-width: 1080px;
+  margin: 1rem auto;
+  border: 2px solid black;
 }
 
 .filterHide {
-    display: none;
+  display: none;
 }
 
 .filterCloseBtn {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 1em;
-    cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 1em;
+  cursor: pointer;
 }
 
 h3 {
-    margin: 1rem;
-    display: block;
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
+  margin: 1rem;
+  display: block;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
 }
 
 .allFilters {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 16px;
-    margin: 1rem;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+  margin: 1rem;
 }
 
 h4 {
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .byType {
-    grid-column: 1 / 4;
-    display: flex;
-    flex-direction: column;
-    font-size: 0.75rem;
+  grid-column: 1 / 4;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.75rem;
 }
 
 .byRating {
-    grid-column: 5 / 9;
+  grid-column: 5 / 9;
 
-    .byRatingStars {
-        display: flex;
-        flex-direction: row;
-        
-        ul {
-            display: flex;
-            flex-direction: row;
-            padding: 0;
-            li {
-                list-style-type: none;
-                color: red;
-                font-size: 1rem;
-            }
+  .byRatingStars {
+    display: flex;
+    flex-direction: row;
+
+    ul {
+      display: flex;
+      flex-direction: row;
+      padding: 0;
+      li {
+        list-style-type: none;
+      }
+      .challenge-rating-star {
+        color: red;
+        opacity: 20%;
+        cursor: pointer;
+        font-size: 1.2rem;
+
+        &.active {
+          opacity: 100%;
         }
-        small {
-            align-self: center;
-            padding: 0.5em;
-        }
+      }
     }
-
+    small {
+      align-self: center;
+      padding: 0.5em;
+    }
+  }
 }
-
-
 
 .byTags {
-    grid-column: 10 / 13;
-    ul {
-        display: flex;
-        flex-wrap: wrap;
-        li {
-            font-size: 0.75rem;
-            color: $c-beige;
-            font-weight: bold;
-            border: 2px solid;
-            border-radius: 2rem;
-            padding: 0.5em;
-            margin: 0.1em;
-            white-space: nowrap;
-            cursor: pointer;
-        }
-        .active {
-            background-color: $c-beige;
-            color: white;
-        }
+  grid-column: 10 / 13;
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    li {
+      font-size: 0.75rem;
+      color: $c-beige;
+      font-weight: bold;
+      border: 2px solid;
+      border-radius: 2rem;
+      padding: 0.5em;
+      margin: 0.1em;
+      white-space: nowrap;
+      cursor: pointer;
     }
-
+    .active {
+      background-color: $c-beige;
+      color: white;
+    }
+  }
 }
 
-
 .byKeyword {
-    grid-column: 5 / 9;
-    h3 {
-        margin: 0 0 0.5em 0;
-        
-    }
+  grid-column: 5 / 9;
+  h3 {
+    margin: 0 0 0.5em 0;
+  }
 
-    input {
-        height: 2em;
-        width: 75%;
-    }
+  input {
+    height: 2em;
+    width: 75%;
+  }
 }
