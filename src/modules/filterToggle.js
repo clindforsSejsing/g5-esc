@@ -16,7 +16,7 @@ const filterToggle = () => {
 };
 // Rating
 const minRatingStars = document.querySelectorAll(".minRating > li");
-let maxRating = 0;
+let maxRating = 5;
 let minRating = 0;
 minRatingStars.forEach((star, index) => {
   star.addEventListener("click", () => {
@@ -25,7 +25,7 @@ minRatingStars.forEach((star, index) => {
         ? otherStars.classList.add("active")
         : otherStars.classList.remove("active");
     });
-    minRating = index;
+    minRating = index + 1;
   });
 });
 
@@ -38,7 +38,7 @@ maxRatingStars.forEach((star, index) => {
         ? otherStars.classList.add("active")
         : otherStars.classList.remove("active");
     });
-    maxRating = index;
+    maxRating = index + 1;
   });
 });
 export { filterToggle, maxRating, minRating };

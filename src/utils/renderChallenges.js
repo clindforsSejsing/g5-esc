@@ -11,10 +11,18 @@ const Render = (() => {
       createCards(item);
     });
   };
+  const deleteAndRender = (data) => {
+    const list = document.querySelector(".challenges-list");
+    while (list.firstChild) {
+      list.removeChild(list.firstChild);
+    }
+    Render.allRooms(data);
+  };
 
   return {
     allRooms,
     threeTopRating,
+    deleteAndRender,
   };
 })();
 

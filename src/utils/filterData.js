@@ -4,40 +4,53 @@ export const filter = (() => {
       return b.rating - a.rating;
     });
 
-  const search = (searchInput, challenges) => {
-    const searchResults = challenges.filter(
+  const search = (searchInput, challenges) =>
+    challenges.filter(
       (challenge) =>
         challenge.title.toLowerCase().includes(searchInput) ||
         challenge.description.toLowerCase().includes(searchInput)
     );
-    console.log(searchResults);
-    return searchResults;
-  };
 
-  const type = (typeSelected, challenges) => {
-    const checkResults = challenges.filter((challenge) =>
-      typeSelected.includes(challenge.type)
-    );
-    console.log(checkResults);
-    return checkResults;
-  };
+  const type = (typeSelected, challenges) =>
+    typeSelected.length > 0
+      ? challenges.filter((challenge) => typeSelected.includes(challenge.type))
+      : challenges;
 
   const rating = (minRating, maxRating, challenges) => {
     const ratingResults = challenges.filter(
       (challenge) =>
         challenge.rating >= minRating && challenge.rating <= maxRating
     );
-    console.log(ratingResults);
     return ratingResults;
   };
 
   const tags = (tagsSelected, challenges) => {
-    const tagResults = challenges.filter((challenge) =>
+    const filterTags = challenges.filter((challenge) =>
       tagsSelected.every((tags) => challenge.labels.includes(tags))
     );
-    console.log(tagsSelected);
-    console.log(tagResults);
-    return tagResults;
+    const result = tagsSelected.length > 0 ? filterTags : challenges;
+    return result;
+  };
+  const challenges = (
+    typeSelected,
+    tagsSelected,
+    searchInput,
+    minRating,
+    maxRating,
+    challenges
+  ) => {
+    const filterResult = filter.search(
+      searchInput,
+      filter.type(
+        typeSelected,
+        filter.rating(
+          minRating,
+          maxRating,
+          filter.tags(tagsSelected, challenges)
+        )
+      )
+    );
+    return filterResult;
   };
 
   return {
@@ -45,5 +58,7 @@ export const filter = (() => {
     search,
     type,
     tags,
+    rating,
+    challenges,
   };
 })();
