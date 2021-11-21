@@ -13,10 +13,14 @@ const Render = (() => {
   };
   const deleteAndRender = (data) => {
     const list = document.querySelector(".challenges-list");
-    while (list.firstChild) {
-      list.removeChild(list.firstChild);
+    list.innerHTML = "";
+    if (data.length > 0) {
+      Render.allRooms(data);
+    } else {
+      const noMatch = document.createElement("h1");
+      noMatch.textContent = "No matching challenges";
+      list.append(noMatch);
     }
-    Render.allRooms(data);
   };
 
   return {
