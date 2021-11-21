@@ -15,28 +15,28 @@ const filterToggle = () => {
   filterCloseBtn.addEventListener("click", toggleFilter);
 };
 // Rating
-const minRatingStars = document.querySelectorAll(".minRating > li");
+const minRatingIcon = document.querySelectorAll(".minRating > li");
 let maxRating = 5;
 let minRating = 0;
-minRatingStars.forEach((star, index) => {
-  star.addEventListener("click", () => {
-    minRatingStars.forEach((otherStars, otherIndex) => {
-      index >= otherIndex
-        ? otherStars.classList.add("active")
-        : otherStars.classList.remove("active");
+minRatingIcon.forEach((item, index) => {
+  item.addEventListener("click", () => {
+    minRatingIcon.forEach((secondItem, secondIndex) => {
+      index >= secondIndex
+        ? secondItem.classList.add("active")
+        : secondItem.classList.remove("active");
     });
     minRating = index + 1;
   });
 });
 
-const maxRatingStars = document.querySelectorAll(".maxRating > li");
+const maxRatingIcon = document.querySelectorAll(".maxRating > li");
 
-maxRatingStars.forEach((star, index) => {
-  star.addEventListener("click", () => {
-    maxRatingStars.forEach((otherStars, otherIndex) => {
-      index >= otherIndex
-        ? otherStars.classList.add("active")
-        : otherStars.classList.remove("active");
+maxRatingIcon.forEach((item, index) => {
+  item.addEventListener("click", () => {
+    maxRatingIcon.forEach((secondItem, secondIndex) => {
+      index >= secondIndex
+        ? secondItem.classList.add("active")
+        : secondItem.classList.remove("active");
     });
     maxRating = index + 1;
   });
