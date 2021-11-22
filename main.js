@@ -1,5 +1,5 @@
 import { Render } from "./src/utils/renderChallenges.js";
-import { filterSolutions } from "./src/utils/filterData.js";
+import { filter } from "./src/utils/filterData.js";
 import { loadData } from "./src/utils/fetch.js";
 import { filterToggle } from "./src/modules/filterToggle.js";
 import { createTags } from "./src/modules/createTags.js";
@@ -12,9 +12,8 @@ window.onload = async () => {
     filterToggle();
     createTags();
   } else {
-    Render.threeTopRating(filterSolutions.topThree(challenges));
+    Render.threeTopRating(filter.topThree(challenges));
   }
 };
 onload();
-
 export { challenges };
