@@ -11,7 +11,7 @@ const loadTags = () => {
     }
   }
   return allTags;
-}
+};
 
 const createTags = () => {
   // Create list with all tags displayed in DOM

@@ -25,7 +25,7 @@ minRatingIcon.forEach((item, index) => {
         ? secondItem.classList.add("active")
         : secondItem.classList.remove("active");
     });
-    minRating = index + 1;
+    minRating = index;
   });
 });
 
