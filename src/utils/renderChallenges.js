@@ -11,10 +11,22 @@ const Render = (() => {
       createCards(item);
     });
   };
+  const deleteAndRender = (data) => {
+    const list = document.querySelector(".challenges-list");
+    list.innerHTML = "";
+    if (data.length > 0) {
+      Render.allRooms(data);
+    } else {
+      const noMatch = document.createElement("h1");
+      noMatch.textContent = "No matching challenges";
+      list.append(noMatch);
+    }
+  };
 
   return {
     allRooms,
     threeTopRating,
+    deleteAndRender,
   };
 })();
 

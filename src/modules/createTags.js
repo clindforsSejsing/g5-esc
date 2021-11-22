@@ -11,7 +11,7 @@ const loadTags = () => {
     }
   }
   return allTags;
-}
+};
 
 const createTags = () => {
   // Create list with all tags displayed in DOM
@@ -19,6 +19,7 @@ const createTags = () => {
   const tagList = document.querySelector(".tagList");
   allTags.forEach((item) => {
     const li = document.createElement("li");
+    li.setAttribute("class", "tags");
     li.innerText = item;
     tagList.append(li);
 

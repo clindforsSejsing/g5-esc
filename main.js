@@ -1,7 +1,11 @@
 import { Render } from "./src/utils/renderChallenges.js";
-import { filterSolutions } from "./src/utils/filterData.js";
+import { filter } from "./src/utils/filterData.js";
 import { loadData } from "./src/utils/fetch.js";
-import { filterToggle } from "./src/modules/filterToggle.js";
+import {
+  filterToggle,
+  minRating,
+  maxRating,
+} from "./src/modules/filterToggle.js";
 import { createTags } from "./src/modules/createTags.js";
 
 const challenges = await loadData();
@@ -12,9 +16,83 @@ window.onload = async () => {
     filterToggle();
     createTags();
   } else {
-    Render.threeTopRating(filterSolutions.topThree(challenges));
+    Render.threeTopRating(filter.topThree(challenges));
   }
 };
 onload();
-
 export { challenges };
+
+//DOM and Global Variables
+const rating = document.querySelectorAll(".filter-rating-star");
+const tags = document.querySelectorAll(".tags");
+const checkBoxes = document.querySelectorAll(".checkboxes");
+const searchBar = document.querySelector("#byKeywordInput");
+let typeSelected = [];
+let tagsSelected = [];
+let searchInput = "";
+
+rating.forEach((item) => {
+  item.addEventListener("click", () => {
+    const data = filter.challenges(
+      typeSelected,
+      tagsSelected,
+      searchInput,
+      minRating,
+      maxRating,
+      challenges
+    );
+    Render.deleteAndRender(data);
+  });
+});
+
+tags.forEach((tag) => {
+  tag.addEventListener("click", () => {
+    if (tag.classList.contains("active")) {
+      tagsSelected.push(tag.textContent);
+    } else {
+      tagsSelected = tagsSelected.filter((e) => e !== tag.textContent);
+    }
+    const data = filter.challenges(
+      typeSelected,
+      tagsSelected,
+      searchInput,
+      minRating,
+      maxRating,
+      challenges
+    );
+    Render.deleteAndRender(data);
+  });
+});
+
+checkBoxes.forEach((checkbox) => {
+  checkbox.addEventListener("click", () => {
+    if (checkbox.checked) {
+      typeSelected.push(checkbox.value);
+    } else {
+      typeSelected = typeSelected.filter((e) => e !== checkbox.value);
+    }
+    const data = filter.challenges(
+      typeSelected,
+      tagsSelected,
+      searchInput,
+      minRating,
+      maxRating,
+      challenges
+    );
+    Render.deleteAndRender(data);
+  });
+});
+
+searchBar.addEventListener("keyup", (e) => {
+  const searchInput = e.target.value.toLowerCase();
+
+  const data = filter.challenges(
+    typeSelected,
+    tagsSelected,
+    searchInput,
+    minRating,
+    maxRating,
+    challenges
+  );
+  Render.deleteAndRender(data);
+});
