@@ -675,7 +675,6 @@ h4 {
 .byTags {
   grid-column: 10/13;
 }
-
 .byTags ul {
   display: flex;
   flex-wrap: wrap;
@@ -706,8 +705,6 @@ h4 {
   height: 2em;
   width: 75%;
 }
-<<<<<<< HEAD
-=======
 
 @media screen and (min-width: 960px) {
   #myModal {
@@ -793,6 +790,3 @@ h4 {
     font-size: 1rem;
   }
 }
-
-/*# sourceMappingURL=main.css.map */
->>>>>>> main
