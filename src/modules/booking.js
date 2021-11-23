@@ -1,88 +1,161 @@
-"strict coding";
-
 const modal = document.getElementById("myModal");
-const modalwrap = document.getElementById("modal-content");
+const modalwrap = document.querySelector(".modal-content");
 
-function cardCtaBtnClick(title, minP, maxP) {
-  firstModal();
-  modalValue();
-  
-  modal.style.display = "block";
- 
-  const infoCard = (document.getElementById(
-    "bookThis"
-  ).innerHTML = `Book Room ${title} (Step 1)`);
- 
+function handleBooking(title, minP, maxP) {
+  bookingStepOne(title, minP, maxP);
+
   // user clicks outside modal, close modal
   window.addEventListener("click", function (event) {
     if (event.target == modal) {
       modal.style.display = "none";
     }
   });
-
-function firstModal() {
-//create tags in modal
-const titelModal = document.createElement("h1");
-titelModal.setAttribute("id", "bookThis");
-modalwrap.append(titelModal);
-const text1Modal = document.createElement("p");
-text1Modal.setAttribute("id", "whatDate");
-modalwrap.append(text1Modal);
-const text2Modal = document.createElement("p");
-text2Modal.setAttribute("id", "dateText");
-modalwrap.append(text2Modal);
-const inputField1 = document.createElement("input");
-inputField1.setAttribute("id", "date");
-inputField1.setAttribute("type", "text");
-modalwrap.append(inputField1);
-const searchBtn = document.createElement("button");
-searchBtn.setAttribute("id", "searchTimes-btn");
-modalwrap.append(searchBtn);
 }
-// give modal.-tags value
-function modalValue(){
-document.getElementById("whatDate").innerHTML = "What date would you like to come";
-document.getElementById("dateText").innerHTML = "Date";
-document.getElementById("date").placeholder = "yyyy-mm-dd";
-document.getElementById("searchTimes-btn").innerHTML = "Search available times";
+
+function bookingStepOne(title, minP, maxP) {
+  modal.style.display = "block";
+  modalwrap.innerHTML = "";
+  console.log(title);
+  //create tags in modal
+  const titelModal = document.createElement("h1");
+  titelModal.setAttribute("id", "bookThis");
+  titelModal.textContent = `Book room ${title} (Step 1)`;
+  modalwrap.append(titelModal);
+
+  const text1Modal = document.createElement("p");
+  text1Modal.innerHTML = "What date would you like to come";
+  text1Modal.setAttribute("id", "whatDate");
+  modalwrap.append(text1Modal);
+
+  const text2Modal = document.createElement("p");
+  text2Modal.innerHTML = "Date";
+  text2Modal.setAttribute("id", "dateText");
+  modalwrap.append(text2Modal);
+
+  const inputField1 = document.createElement("input");
+  inputField1.setAttribute("id", "date");
+  inputField1.setAttribute("type", "text");
+  inputField1.setAttribute("placeholder", "yyyy-mm-dd");
+  modalwrap.append(inputField1);
+
+  const searchBtn = document.createElement("button");
+  searchBtn.setAttribute("id", "searchTimes-btn");
+  searchBtn.innerHTML = "Search available times";
+  searchBtn.addEventListener("click", async function () {
+    const availableTimes = await getTimeSlots(inputField1.value);
+    bookingStepTwo(title, minP, maxP, availableTimes, inputField1.value);
+    console.log(availableTimes);
+  });
+  modalwrap.append(searchBtn);
+}
+
+const bookingStepTwo = (title, minP, maxP, availableTimes, date) => {
+  modalwrap.innerHTML = "";
+
+  const titelModal = document.createElement("h1");
+  titelModal.setAttribute("id", "bookThis");
+  titelModal.textContent = `Book room ${title} (Step 2)`;
+  modalwrap.append(titelModal);
+
+  const nameLabel = document.createElement("label");
+  nameLabel.setAttribute("for", "name");
+  nameLabel.textContent = "Name";
+  modalwrap.append(nameLabel);
+
+  const nameInput = document.createElement("input");
+  nameInput.setAttribute("type", "text");
+  nameInput.setAttribute("id", "name");
+  modalwrap.append(nameInput);
+
+  const emailLabel = document.createElement("label");
+  emailLabel.setAttribute("for", "email");
+  emailLabel.textContent = "E-mail";
+  modalwrap.append(emailLabel);
+
+  const emailInput = document.createElement("input");
+  emailInput.setAttribute("type", "email");
+  emailInput.setAttribute("id", "email");
+  modalwrap.append(emailInput);
+
+  const timeLabel = document.createElement("label");
+  timeLabel.setAttribute("for", "time");
+  timeLabel.textContent = "What time?";
+  modalwrap.append(timeLabel);
+
+  const timeList = document.createElement("select");
+  timeList.setAttribute("name", "time");
+  timeList.setAttribute("id", "time");
+  modalwrap.append(timeList);
+
+  availableTimes.forEach((time) => {
+    const timeOption = document.createElement("option");
+    timeOption.setAttribute("value", `${time}`);
+    timeOption.textContent = `${time}`;
+    timeList.append(timeOption);
+  });
+
+  const participantsLabel = document.createElement("label");
+  participantsLabel.setAttribute("for", "participant");
+  participantsLabel.textContent = "How many participants?";
+  modalwrap.append(participantsLabel);
+
+  const participantsList = document.createElement("select");
+  participantsList.setAttribute("name", "participant");
+  participantsList.setAttribute("id", "participant");
+  modalwrap.append(participantsList);
+
+  for (let i = minP; i <= maxP; i++) {
+    const participant = document.createElement("option");
+    participant.setAttribute("value", `${i}`);
+    participant.textContent = `${i} Participants`;
+    participantsList.append(participant);
+  }
+
+  const searchBtn = document.createElement("button");
+  searchBtn.setAttribute("id", "searchTimes-btn");
+  searchBtn.innerHTML = "Submit Booking";
+  searchBtn.addEventListener("click", async () => {
+    const res = await fetch(
+      "https://lernia-sjj-assignments.vercel.app/api/booking/reservations",
+      {
+        method: "POST",
+        mode: "cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: nameInput.value,
+          email: emailInput.value,
+          date: date,
+          time: timeList.value,
+          participants: parseInt(participantsList.value),
+        }),
+      }
+    );
+    console.log(res);
+    bookingStepThree();
+  });
+  modalwrap.append(searchBtn);
 };
 
-let searchTimesBtn = document.getElementById("searchTimes-btn");
+const bookingStepThree = () => {
+  modalwrap.innerHTML = "";
 
-searchTimesBtn.addEventListener("click", function () {
- let userDate = document.getElementById("date").value;
-  getTimeSlots(userDate);
-});
+  const title = document.createElement("h1");
+  title.textContent = "Thank you!";
+  modalwrap.append(title);
+
+  const returnLink = document.createElement("a");
+  returnLink.setAttribute("href", "challenges.html");
+  returnLink.innerHTML = "Back to challenges";
+  modalwrap.append(returnLink);
 };
 //inhämta data
-async function getTimeSlots(wantedDate)
-{
-  const response = await fetch ('https://lernia-sjj-assignments.vercel.app/api/booking/available-times?date=' + wantedDate);
+async function getTimeSlots(wantedDate) {
+  const response = await fetch(
+    "https://lernia-sjj-assignments.vercel.app/api/booking/available-times?date=" +
+      wantedDate
+  );
   const slotJson = await response.json();
-  window.alert(slotJson.slots);
+  return slotJson.slots;
 }
-// const formName = document.getElementById("whatDate").innerHTML = "Name";
-//testing-area.. under construction..//
-// const field1 = document.createElement("INPUT");
-// field1.setAttribute("type", "text");
-// field1.setAttribute("value", " ");
-// getElementsByClassName("modal-content").append(field1);
 
-
-
-// const createForm = document.createForm('form');
-// createForm.setAttribute("action", "");
-// createForm.setAttribute("method", "post");
-// x.appendChild(createForm);
-
-
-// const field2 = document.createElement("INPUT");
-// field2.setAttribute("type", "text");
-// myModal.append(field2);
-
-// });
-
-//Nestla btns så att det inte blir error! fixa form//
-
-export { cardCtaBtnClick };
-
+export { handleBooking };
