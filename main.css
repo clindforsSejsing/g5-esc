@@ -540,19 +540,19 @@ img {
 .footer .footer-content > div {
   margin: 0 0 2rem;
 }
-.footer h2 {
+.footer .footer-content h2 {
   font-size: 1rem;
   margin-bottom: 0.3rem;
 }
-.footer ul {
+.footer .footer-content ul {
   margin: 0 0 1rem;
 }
-.footer a {
+.footer .footer-content a {
   color: white;
   text-decoration: none;
   transition: color 0.2s;
 }
-.footer a:hover {
+.footer .footer-content a:hover {
   color: #8acfe5;
 }
 @media screen and (min-width: 960px) {
@@ -706,87 +706,134 @@ h4 {
   width: 75%;
 }
 
-@media screen and (min-width: 960px) {
-  #myModal {
-    bottom: 0;
-    color: #011827;
-    display: none;
-    height: 100%;
-    left: 0;
-    margin: auto;
-    margin-top: -1rem;
-    overflow: auto;
-    padding: 20px;
-    position: fixed;
-    right: 0;
-    top: 0;
-    width: 100%;
-    z-index: 1;
-  }
+#myModal {
+  bottom: 0;
+  color: #011827;
+  display: none;
+  height: 100%;
+  left: 0;
+  margin: auto;
+  margin-top: -1rem;
+  overflow: auto;
+  padding: 20px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
 
-  .modal-content {
-    background-color: #fefefe;
-    border: 1px solid #888;
-    color: #011827;
-    height: 25rem;
-    margin: auto;
-    margin-top: 0.5rem;
-    padding: 20px;
-    width: 35rem;
-  }
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  background-color: #fefefe;
+  border: 1px solid #888;
+  color: #011827;
+  height: 25rem;
+  margin: auto;
+  margin-top: 0.5rem;
+  padding: 20px;
+  width: 35rem;
+}
+.modal-content label {
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+.modal-content input {
+  margin: 0 0 1rem 0;
+}
 
-  .close {
-    color: #011827;
-    float: right;
-    font-size: 1rem;
-    font-weight: bold;
-  }
+.close {
+  color: #011827;
+  float: right;
+  font-size: 1rem;
+  font-weight: bold;
+}
 
-  .close:hover,
+.close:hover,
 .close:focus {
-    color: #888;
-    text-decoration: none;
-    cursor: pointer;
-  }
+  color: #888;
+  text-decoration: none;
+  cursor: pointer;
+}
 
-  #searchTimes-btn {
-    display: block;
-    margin-left: 25rem;
-    margin-top: 16rem;
-    background-color: #8acfe5;
-    padding: 0.5rem 1rem;
-    border-radius: 0.3rem;
-    color: 11827;
-    text-decoration: none;
-    font-size: 0.7rem;
-    font-weight: bold;
-  }
+#searchTimes-btn {
+  display: block;
+  margin: 0.5rem;
+  background-color: #e3170a;
+  padding: 1rem 3rem;
+  border-radius: 0.3rem;
+  color: black;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: background-color 0.2s;
+  color: white;
+  border: 0;
+  align-self: flex-end;
+  margin-top: auto;
+}
+#searchTimes-btn:hover {
+  background-color: #cb1509;
+}
 
-  #bookThis {
-    font-size: 1rem;
-    margin-left: 1rem;
-    margin-top: 0.3rem;
-    padding-bottom: 1.2rem;
-  }
+#bookThis {
+  font-size: 1rem;
+  margin-top: 0.3rem;
+  padding-bottom: 1.2rem;
+}
 
-  .modal-content p {
-    color: 11827;
-    font-size: 0.8rem;
-    margin-left: 1rem;
-    padding-bottom: 1rem;
-  }
+.modal-content p {
+  color: 11827;
+  font-size: 0.8rem;
+  padding-bottom: 1rem;
+}
 
-  #dateText {
-    color: 11827;
-    font-size: 0.7rem;
-    font-weight: bold;
-    margin: 0;
-    margin-left: 1rem;
-    padding-bottom: 0;
-  }
+#dateText {
+  color: 11827;
+  font-size: 0.7rem;
+  font-weight: bold;
+  margin: 0;
+  padding-bottom: 0;
+}
 
-  input {
-    margin-left: 1rem;
-    font-size: 1rem;
-  }
+#date {
+  width: 10rem;
+  font-size: 1.2rem;
+  height: 2.5rem;
+  padding: 0 0 0 0.5rem;
+}
+
+#name {
+  width: 50%;
+  height: 1.8rem;
+}
+
+#email {
+  width: 50%;
+  height: 1.8rem;
+}
+
+#time {
+  width: 25%;
+  font-size: 1.2rem;
+  padding: 0 0 0 0.5rem;
+  height: 2.5rem;
+  margin: 0 0 1rem 0;
+}
+
+#participant {
+  width: 25%;
+  font-size: 1rem;
+  height: 2.5rem;
+  padding: 0 0 0 0.5rem;
+}
+
+#textContent {
+  text-align: center;
+  align-self: center;
+  margin: auto;
+}
+#textContent h1 {
+  margin: 0 0 3rem 0;
 }

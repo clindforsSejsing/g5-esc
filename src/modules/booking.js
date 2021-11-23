@@ -3,27 +3,24 @@ const modalwrap = document.querySelector(".modal-content");
 
 function handleBooking(title, minP, maxP) {
   bookingStepOne(title, minP, maxP);
-
-  // user clicks outside modal, close modal
-  window.addEventListener("click", function (event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  });
 }
+window.addEventListener("click", function (event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+});
 
-function bookingStepOne(title, minP, maxP) {
+const bookingStepOne = (title, minP, maxP) => {
   modal.style.display = "block";
   modalwrap.innerHTML = "";
-  console.log(title);
-  //create tags in modal
+
   const titelModal = document.createElement("h1");
   titelModal.setAttribute("id", "bookThis");
   titelModal.textContent = `Book room ${title} (Step 1)`;
   modalwrap.append(titelModal);
 
   const text1Modal = document.createElement("p");
-  text1Modal.innerHTML = "What date would you like to come";
+  text1Modal.innerHTML = "What date would you like to come?";
   text1Modal.setAttribute("id", "whatDate");
   modalwrap.append(text1Modal);
 
@@ -32,22 +29,21 @@ function bookingStepOne(title, minP, maxP) {
   text2Modal.setAttribute("id", "dateText");
   modalwrap.append(text2Modal);
 
-  const inputField1 = document.createElement("input");
-  inputField1.setAttribute("id", "date");
-  inputField1.setAttribute("type", "text");
-  inputField1.setAttribute("placeholder", "yyyy-mm-dd");
-  modalwrap.append(inputField1);
+  const dateInput = document.createElement("input");
+  dateInput.setAttribute("id", "date");
+  dateInput.setAttribute("type", "text");
+  dateInput.setAttribute("placeholder", "yyyy-mm-dd");
+  modalwrap.append(dateInput);
 
   const searchBtn = document.createElement("button");
   searchBtn.setAttribute("id", "searchTimes-btn");
   searchBtn.innerHTML = "Search available times";
   searchBtn.addEventListener("click", async function () {
-    const availableTimes = await getTimeSlots(inputField1.value);
-    bookingStepTwo(title, minP, maxP, availableTimes, inputField1.value);
-    console.log(availableTimes);
+    const availableTimes = await getTimeSlots(dateInput.value);
+    bookingStepTwo(title, minP, maxP, availableTimes, dateInput.value);
   });
   modalwrap.append(searchBtn);
-}
+};
 
 const bookingStepTwo = (title, minP, maxP, availableTimes, date) => {
   modalwrap.innerHTML = "";
@@ -130,7 +126,6 @@ const bookingStepTwo = (title, minP, maxP, availableTimes, date) => {
         }),
       }
     );
-    console.log(res);
     bookingStepThree();
   });
   modalwrap.append(searchBtn);
@@ -139,14 +134,18 @@ const bookingStepTwo = (title, minP, maxP, availableTimes, date) => {
 const bookingStepThree = () => {
   modalwrap.innerHTML = "";
 
+  const content = document.createElement("div");
+  content.setAttribute("id", "textContent");
+  modalwrap.append(content);
+
   const title = document.createElement("h1");
   title.textContent = "Thank you!";
-  modalwrap.append(title);
+  content.append(title);
 
   const returnLink = document.createElement("a");
   returnLink.setAttribute("href", "challenges.html");
   returnLink.innerHTML = "Back to challenges";
-  modalwrap.append(returnLink);
+  content.append(returnLink);
 };
 //inhämta data
 async function getTimeSlots(wantedDate) {
