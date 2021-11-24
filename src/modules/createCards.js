@@ -26,17 +26,28 @@ const createCards = (data) => {
   cardRating.classList.add("challenge-rating");
   cardMeta.append(cardRating);
 
+  
+  /// function for creating star
+  /// startype = "on", "half" or "off"
+  const createStar = (startype) => {
+    const ratingStar = document.createElement("li");
+    ratingStar.classList.add("challenge-rating-star");
+    ratingStar.classList.add(startype);
+    cardRating.append(ratingStar);
+  }
+  // check if halfstar is required
+  let halfstar = !Number.isInteger(data.rating);
   for (let i = 0; i < 5; i++) {
-    if (i < data.rating) {
-      const ratingStar = document.createElement("li");
-      ratingStar.classList.add("challenge-rating-star");
-      ratingStar.classList.add("on");
-      cardRating.append(ratingStar);
+
+    if (i < Math.floor(data.rating)) {
+      createStar("on");
+
+    } else if (halfstar){
+        createStar("half");
+        halfstar = false;
+
     } else {
-      const ratingStar = document.createElement("li");
-      ratingStar.classList.add("challenge-rating-star");
-      ratingStar.classList.add("off");
-      cardRating.append(ratingStar);
+        createStar("off");
     }
   }
 
