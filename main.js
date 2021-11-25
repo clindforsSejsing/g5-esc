@@ -18,6 +18,9 @@ window.onload = async () => {
   } else {
     Render.threeTopRating(filter.topThree(challenges));
   }
+ 
+
+
 };
 onload();
 export { challenges };
@@ -96,3 +99,26 @@ searchBar.addEventListener("keyup", (e) => {
   );
   Render.deleteAndRender(data);
 });
+
+
+
+let passedString = location.search.substring(1);
+
+//window.alert(passedString);
+if(passedString == "onsite")
+{
+  let filtToggleButton = document.getElementsByClassName("filterToggleBtn")[0];
+  filtToggleButton.click();
+
+  const inCludeOnSite = document.querySelector("#includeOnsite");
+  inCludeOnSite.click();
+} else if (passedString=="online"){
+
+  let filtToggleButton = document.getElementsByClassName("filterToggleBtn")[0];
+  filtToggleButton.click();
+
+  const inCludeOnLine = document.querySelector("#includeOnline");
+  inCludeOnLine.click();
+
+
+}

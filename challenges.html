@@ -4,6 +4,7 @@
 <head>
   <link rel="stylesheet" type="text/css" href="main.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
 </head>
 
 <body>
@@ -13,8 +14,8 @@
   <nav class="main-nav">
     <a class="main-nav-toggle"></a>
     <ul class="main-menu">
-      <li><a href="#">Play online</a></li>
-      <li><a href="#">Play on-site</a></li>
+      <li><a href="challenges.html?online">Play online</a></li>
+      <li><a href="challenges.html?onsite">Play on-site</a></li>
       <li><a href="#">The story</a></li>
       <li><a href="#">Contact us</a></li>
     </ul>
@@ -109,8 +110,8 @@
           <li><a href="#">Legal</a></li>
         </ul>
         <ul>
-          <li><a href="#">Play online</a></li>
-          <li><a href="#">Play on-site</a></li>
+          <li><a href="challenges.html?online">Play online</a></li>
+          <li><a href="challenges.html?onsite">Play on-site</a></li>
         </ul>
       </div>
       <div class="footer-social">
@@ -127,14 +128,20 @@
       </div>
     </div>
   </footer>
+ 
   <script type="module" src="main.js">
     document
       .querySelector(".main-nav-toggle")
       .addEventListener("click", () => {
         document.querySelector(".main-nav").classList.toggle("open");
       });
+
   </script>
-  <script src="src/modules/filterToggle.js"></script>
+  <script src="src/modules/filterToggle.js">
+
+
+  </script>
   <script type="module" src="src/modules/createTags.js"></script>
+
 </body>
 </html>
