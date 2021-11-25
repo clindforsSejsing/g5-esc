@@ -1,4 +1,4 @@
-@use 'sass:math';
+@use "sass:math";
 
 @mixin desktop {
   @media screen and (min-width: $bp-desktop) {
@@ -7,7 +7,12 @@
 }
 
 @function brightness($color) {
-  @return math.div(((red($color) * .299) + (green($color) * .587) + (blue($color) * .114)), 255) * 100%;
+  @return math.div(
+      (
+        (red($color) * 0.299) + (green($color) * 0.587) + (blue($color) * 0.114)
+      ),
+      255
+    ) * 100%;
 }
 
 @mixin button($bg-color) {
@@ -34,7 +39,6 @@
 @mixin section {
   padding: 1rem;
 }
-
 
 @mixin challenge-ctas {
   padding: 1rem 0;
@@ -72,4 +76,8 @@
   &:hover {
     color: $c-lightblue;
   }
+}
+@mixin footer-style {
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
 }

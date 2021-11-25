@@ -9,9 +9,17 @@
     & > div {
       margin: 0 0 2rem;
     }
-    h2 {
-      font-size: 1rem;
-      margin-bottom: 0.3rem;
+    div.footer-summary h2 {
+      @include footer-style;
+      margin-left: -11rem;
+    }
+    div.footer-sitemap h2 {
+      @include footer-style;
+      margin-left: -7rem;
+    }
+    div.footer-social h2 {
+      @include footer-style;
+      margin-left: -5rem;
     }
 
     ul {
