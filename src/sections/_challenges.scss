@@ -23,7 +23,7 @@
 .challenges-item {
   display: flex;
   flex-direction: column;
-
+  height: 35rem;
   border-radius: $border-radius;
   background-color: white;
   box-shadow: 0 0 1rem rgba($c-beige, 0.5);
@@ -76,10 +76,10 @@
     margin-bottom: 1rem;
   }
 
-  .challenge-cta {
+  a.challenge-cta {
     @include button($c-red);
-    margin: 1rem;
     align-self: flex-end;
+    margin-block-start: auto;
   }
 
   @include desktop {

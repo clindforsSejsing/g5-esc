@@ -300,6 +300,7 @@ img {
 .challenges-item {
   display: flex;
   flex-direction: column;
+  height: 35rem;
   border-radius: 0.3rem;
   background-color: white;
   box-shadow: 0 0 1rem rgba(182, 189, 181, 0.5);
@@ -346,7 +347,7 @@ img {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
-.challenges-item .challenge-cta {
+.challenges-item a.challenge-cta {
   display: block;
   margin: 0.5rem;
   background-color: #e3170a;
@@ -358,10 +359,10 @@ img {
   font-weight: bold;
   transition: background-color 0.2s;
   color: white;
-  margin: 1rem;
   align-self: flex-end;
+  margin-block-start: auto;
 }
-.challenges-item .challenge-cta:hover {
+.challenges-item a.challenge-cta:hover {
   background-color: #cb1509;
 }
 @media screen and (min-width: 960px) {
