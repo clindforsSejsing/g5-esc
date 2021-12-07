@@ -95,17 +95,14 @@ const bookingStepTwo = (title, minP, maxP, availableTimes, date) => {
   participantsLabel.textContent = "How many participants?";
   modalwrap.append(participantsLabel);
 
-  const participantsList = document.createElement("select");
+  const participantsList = document.createElement("input");
+  participantsList.setAttribute("type", "number");
+  participantsList.setAttribute("min", `${minP}`);
+  participantsList.setAttribute("max", `${maxP}`);
+  participantsList.setAttribute("value", `${minP}`);
   participantsList.setAttribute("name", "participant");
   participantsList.setAttribute("id", "participant");
   modalwrap.append(participantsList);
-
-  for (let i = minP; i <= maxP; i++) {
-    const participant = document.createElement("option");
-    participant.setAttribute("value", `${i}`);
-    participant.textContent = `${i} Participants`;
-    participantsList.append(participant);
-  }
 
   const searchBtn = document.createElement("button");
   searchBtn.setAttribute("id", "searchTimes-btn");
