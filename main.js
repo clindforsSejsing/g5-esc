@@ -18,9 +18,6 @@ window.onload = async () => {
   } else {
     Render.threeTopRating(filter.topThree(challenges));
   }
- 
-
-
 };
 onload();
 export { challenges };
@@ -88,37 +85,41 @@ checkBoxes.forEach((checkbox) => {
 
 searchBar.addEventListener("keyup", (e) => {
   const searchInput = e.target.value.toLowerCase();
-
-  const data = filter.challenges(
-    typeSelected,
-    tagsSelected,
-    searchInput,
-    minRating,
-    maxRating,
-    challenges
-  );
-  Render.deleteAndRender(data);
+  if (searchInput.length >= 3) {
+    const data = filter.challenges(
+      typeSelected,
+      tagsSelected,
+      searchInput,
+      minRating,
+      maxRating,
+      challenges
+    );
+    Render.deleteAndRender(data);
+  } else {
+    const data = filter.challenges(
+      typeSelected,
+      tagsSelected,
+      "",
+      minRating,
+      maxRating,
+      challenges
+    );
+    Render.deleteAndRender(data);
+  }
 });
-
-
-
 let passedString = location.search.substring(1);
 
 //window.alert(passedString);
-if(passedString == "onsite")
-{
+if (passedString == "onsite") {
   let filtToggleButton = document.getElementsByClassName("filterToggleBtn")[0];
   filtToggleButton.click();
 
   const inCludeOnSite = document.querySelector("#includeOnsite");
   inCludeOnSite.click();
-} else if (passedString=="online"){
-
+} else if (passedString == "online") {
   let filtToggleButton = document.getElementsByClassName("filterToggleBtn")[0];
   filtToggleButton.click();
 
   const inCludeOnLine = document.querySelector("#includeOnline");
   inCludeOnLine.click();
-
-
 }
