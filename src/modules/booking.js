@@ -126,7 +126,13 @@ const bookingStepTwo = (title, minP, maxP, availableTimes, date) => {
         }),
       }
     );
-    bookingStepThree();
+     //validation.
+     if(nameInput.value !== "" && (emailInput.value).includes("@")){
+      bookingStepThree();
+      return true;
+    }else{
+      window.alert("Oh! Something went wrong! All fields needs to be filled out. Please check your form again before submiting.")
+    return false;} 
   });
   modalwrap.append(searchBtn);
 };
