@@ -31,8 +31,6 @@ minRatingIcon.forEach((item, index) => {
         minRating = index + 1;
       }
     });
-
-    console.log(minRating);
   });
 });
 
@@ -48,8 +46,6 @@ maxRatingIcon.forEach((item, index) => {
         maxRating = index + 1;
       }
     });
-
-    console.log("max", maxRating);
   });
 });
 export { filterToggle, maxRating, minRating };
