@@ -61,7 +61,10 @@ const bookingStepTwo = (title, minP, maxP, availableTimes, date) => {
   const nameInput = document.createElement("input");
   nameInput.setAttribute("type", "text");
   nameInput.setAttribute("id", "name");
+  nameInput.setAttribute("required", "");
   modalwrap.append(nameInput);
+  
+  
 
   const emailLabel = document.createElement("label");
   emailLabel.setAttribute("for", "email");
@@ -71,6 +74,7 @@ const bookingStepTwo = (title, minP, maxP, availableTimes, date) => {
   const emailInput = document.createElement("input");
   emailInput.setAttribute("type", "email");
   emailInput.setAttribute("id", "email");
+  emailInput.setAttribute("required", "");
   modalwrap.append(emailInput);
 
   const timeLabel = document.createElement("label");
@@ -88,6 +92,8 @@ const bookingStepTwo = (title, minP, maxP, availableTimes, date) => {
     timeOption.setAttribute("value", `${time}`);
     timeOption.textContent = `${time}`;
     timeList.append(timeOption);
+
+   
   });
 
   const participantsLabel = document.createElement("label");
@@ -110,29 +116,37 @@ const bookingStepTwo = (title, minP, maxP, availableTimes, date) => {
   const searchBtn = document.createElement("button");
   searchBtn.setAttribute("id", "searchTimes-btn");
   searchBtn.innerHTML = "Submit Booking";
+
+ 
+
   searchBtn.addEventListener("click", async () => {
-    const res = await fetch(
-      "https://lernia-sjj-assignments.vercel.app/api/booking/reservations",
-      {
-        method: "POST",
-        mode: "cors",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: nameInput.value,
-          email: emailInput.value,
-          date: date,
-          time: timeList.value,
-          participants: parseInt(participantsList.value),
-        }),
-      }
-    );
-     //validation.
-     if(nameInput.value !== "" && (emailInput.value).includes("@")){
+    let validateName = nameInput.reportValidity();
+   // var emailOk = emailInput.reportValidity();
+   let validateEmail = false;
+  if(validateName)
+   {
+    validateEmail = emailInput.reportValidity();
+   }
+
+    if(validateName && validateEmail)
+    {
+      const res = await fetch(
+        "https://lernia-sjj-assignments.vercel.app/api/booking/reservations",
+        {
+          method: "POST",
+          mode: "cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: nameInput.value,
+            email: emailInput.value,
+            date: date,
+            time: timeList.value,
+            participants: parseInt(participantsList.value),
+          }),
+        }
+      );
       bookingStepThree();
-      return true;
-    }else{
-      window.alert("Oh! Something went wrong! All fields needs to be filled out. Please check your form again before submiting.")
-    return false;} 
+    }
   });
   modalwrap.append(searchBtn);
 };
