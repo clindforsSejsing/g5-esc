@@ -34,6 +34,10 @@
   & > *:not(img) {
     margin: 0 1rem;
   }
+  
+  &:hover {
+    box-shadow: 0 0 1rem rgba(black, 1);
+  }
 
   .challenge-title {
     font-size: 1.8rem;
