@@ -311,6 +311,9 @@ img {
 .challenges-item > *:not(img) {
   margin: 0 1rem;
 }
+.challenges-item:hover {
+  box-shadow: 0 0 1rem black;
+}
 .challenges-item .challenge-title {
   font-size: 1.8rem;
   font-weight: normal;
