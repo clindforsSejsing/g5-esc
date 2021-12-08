@@ -63,8 +63,6 @@ const bookingStepTwo = (title, minP, maxP, availableTimes, date) => {
   nameInput.setAttribute("id", "name");
   nameInput.setAttribute("required", "");
   modalwrap.append(nameInput);
-  
-  
 
   const emailLabel = document.createElement("label");
   emailLabel.setAttribute("for", "email");
@@ -92,8 +90,6 @@ const bookingStepTwo = (title, minP, maxP, availableTimes, date) => {
     timeOption.setAttribute("value", `${time}`);
     timeOption.textContent = `${time}`;
     timeList.append(timeOption);
-
-   
   });
 
   const participantsLabel = document.createElement("label");
@@ -113,18 +109,13 @@ const bookingStepTwo = (title, minP, maxP, availableTimes, date) => {
   const searchBtn = document.createElement("button");
   searchBtn.setAttribute("id", "searchTimes-btn");
   searchBtn.innerHTML = "Submit Booking";
-
- 
-
   searchBtn.addEventListener("click", async () => {
     let validateName = nameInput.reportValidity();
-   // var emailOk = emailInput.reportValidity();
    let validateEmail = false;
   if(validateName)
    {
     validateEmail = emailInput.reportValidity();
    }
-
     if(validateName && validateEmail)
     {
       const res = await fetch(
@@ -164,7 +155,6 @@ const bookingStepThree = () => {
   returnLink.innerHTML = "Back to challenges";
   content.append(returnLink);
 };
-//inhämta data
 async function getTimeSlots(wantedDate) {
   const response = await fetch(
     "https://lernia-sjj-assignments.vercel.app/api/booking/available-times?date=" +
@@ -173,5 +163,4 @@ async function getTimeSlots(wantedDate) {
   const slotJson = await response.json();
   return slotJson.slots;
 }
-
 export { handleBooking };
