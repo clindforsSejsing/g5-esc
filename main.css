@@ -311,6 +311,9 @@ img {
 .challenges-item > *:not(img) {
   margin: 0 1rem;
 }
+.challenges-item:hover {
+  box-shadow: 0 0 1rem black;
+}
 .challenges-item .challenge-title {
   font-size: 1.8rem;
   font-weight: normal;
@@ -843,10 +846,11 @@ h4 {
 }
 
 #participant {
-  width: 25%;
-  font-size: 1rem;
-  height: 2.5rem;
+  width: 7%;
+  font-size: 1.1rem;
+  height: 2rem;
   padding: 0 0 0 0.5rem;
+  text-align: center;
 }
 
 #textContent {
@@ -857,5 +861,3 @@ h4 {
 #textContent h1 {
   margin: 0 0 3rem 0;
 }
-
-/*# sourceMappingURL=main.css.map */
