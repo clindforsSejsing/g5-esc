@@ -299,6 +299,7 @@ img {
 
 .challenges-item {
   display: flex;
+  position: relative;
   flex-direction: column;
   height: 33rem;
   border-radius: 0.3rem;
@@ -310,6 +311,22 @@ img {
 }
 .challenges-item > *:not(img) {
   margin: 0 1rem;
+}
+.challenges-item .onsite, .challenges-item .online {
+  display: block;
+  margin: 0;
+  background-size: cover;
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+.challenges-item .online {
+  background-image: url("https://www.emoji.co.uk/files/microsoft-emojis/objects-windows10/9717-personal-computer.png");
+}
+.challenges-item .onsite {
+  background-image: url("https://www.emoji.co.uk/files/microsoft-emojis/travel-places-windows10/10462-house-building.png");
 }
 .challenges-item .challenge-title {
   font-size: 1.8rem;
@@ -858,3 +875,5 @@ h4 {
 #textContent h1 {
   margin: 0 0 3rem 0;
 }
+
+/*# sourceMappingURL=main.css.map */
