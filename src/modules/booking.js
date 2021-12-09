@@ -75,6 +75,17 @@ const bookingStepTwo = (title, minP, maxP, availableTimes, date) => {
   emailInput.setAttribute("required", "");
   modalwrap.append(emailInput);
 
+  const phoneLabel = document.createElement("label");
+  phoneLabel.setAttribute("for", "phone");
+  phoneLabel.textContent = "Phone number";
+  modalwrap.append(phoneLabel);
+
+  const phoneInput = document.createElement("input");
+  phoneInput.setAttribute("type", "tel");
+  phoneInput.setAttribute("id", "phone");
+  phoneInput.setAttribute("required", "");
+  modalwrap.append(phoneInput);
+
   const timeLabel = document.createElement("label");
   timeLabel.setAttribute("for", "time");
   timeLabel.textContent = "What time?";
@@ -112,9 +123,11 @@ const bookingStepTwo = (title, minP, maxP, availableTimes, date) => {
   searchBtn.addEventListener("click", async () => {
     let validateName = nameInput.reportValidity();
    let validateEmail = false;
+   let validatePhone = false;
   if(validateName)
    {
-    validateEmail = emailInput.reportValidity();
+    validateEmail = emailInput.reportValidity() && 
+    (validatePhone = phoneInput.reportValidity());
    }
     if(validateName && validateEmail)
     {
