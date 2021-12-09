@@ -26,6 +26,7 @@ img {
   background-image: url("images/logo.png");
   background-size: 120px;
   background-repeat: no-repeat;
+  cursor: pointer;
 }
 @media screen and (min-width: 960px) {
   .header .logo {
@@ -861,3 +862,5 @@ h4 {
 #textContent h1 {
   margin: 0 0 3rem 0;
 }
+
+/*# sourceMappingURL=main.css.map */

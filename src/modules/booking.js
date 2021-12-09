@@ -163,4 +163,12 @@ async function getTimeSlots(wantedDate) {
   const slotJson = await response.json();
   return slotJson.slots;
 }
+
+window.addEventListener("click", function (event) {
+  const logo = document.getElementById("logo");
+  if (event.target == logo) {
+    window.location.href = "index.html";
+  }});
+
+
 export { handleBooking };
