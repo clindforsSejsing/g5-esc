@@ -26,6 +26,7 @@ img {
   background-image: url("images/logo.png");
   background-size: 120px;
   background-repeat: no-repeat;
+  cursor: pointer;
 }
 @media screen and (min-width: 960px) {
   .header .logo {
@@ -312,6 +313,7 @@ img {
 .challenges-item > *:not(img) {
   margin: 0 1rem;
 }
+
 .challenges-item .onsite, .challenges-item .online {
   display: block;
   margin: 0;
@@ -327,6 +329,10 @@ img {
 }
 .challenges-item .onsite {
   background-image: url("https://www.emoji.co.uk/files/microsoft-emojis/travel-places-windows10/10462-house-building.png");
+
+.challenges-item:hover {
+  box-shadow: 0 0 1rem black;
+
 }
 .challenges-item .challenge-title {
   font-size: 1.8rem;

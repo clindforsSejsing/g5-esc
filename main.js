@@ -83,6 +83,7 @@ checkBoxes.forEach((checkbox) => {
   });
 });
 
+if(document.querySelector("#byKeywordInput")) {
 searchBar.addEventListener("keyup", (e) => {
   const searchInput = e.target.value.toLowerCase();
   if (searchInput.length >= 3) {
@@ -107,6 +108,7 @@ searchBar.addEventListener("keyup", (e) => {
     Render.deleteAndRender(data);
   }
 });
+};
 let passedString = location.search.substring(1);
 
 //window.alert(passedString);
@@ -122,4 +124,5 @@ if (passedString == "onsite") {
 
   const inCludeOnLine = document.querySelector("#includeOnline");
   inCludeOnLine.click();
-}
+};
+

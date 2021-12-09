@@ -4,13 +4,23 @@
 <head>
   <link rel="stylesheet" type="text/css" href="main.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+<title>Challenges</title>
+    <meta property="og:title" content="Book a escape room right now!" />
+    <meta
+      property="og:description"
+      content="Search for the perfect challenge for you and your friends and book right away!"
+    />
+    <meta
+      property="og:image"
+      content="https://s3-alpha-sig.figma.com/img/0f85/bcb7/b31d0d0ae702ebc565f4c0483e706cf4?Expires=1639958400&Signature=fiCa3eAFXJfUVrAN5rRls2PPvsCcOcPVWBW2LV4Ti7I5vsJePMpSCjLX-uls8juP13h4jMaB45~XqrL28ztRYkxUxQPyGDHAsr3cq2Z0lfGQtsf-qQhbS6TAol9tvHUNvBL9sq-al~6N0V9f3UlrBlJfReDrFMcfKDWRCepKtOTJuYJeMCZkUwN5Lo1c6h0gRSxx4mr7AloGltcz~nz1pSIwQJJeW679~B4CszRHFGGfjoNOI5gV5eNnJgR89cgBMkGueXxyJ~zHWd1W-IzKSIW8hY2qcDcGV~N7SoEIDTL8GMoRkBU-4XrRBZwD0Nd4pa5BJaK74cLnqO8JwzvCeg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:url" content="https://pontusvallgren.github.io/g5-esc/challenges.html" />
+    <meta property="og:type" content="website" />
 </head>
-
 <body>
   <header class="header">
-    <h1 class="logo">Hacker Escape Rooms</h1>
-  </header>
+    <h1 class="logo" id="logo">Hacker Escape Rooms</h1></header>
   <nav class="main-nav">
     <a class="main-nav-toggle"></a>
     <ul class="main-menu">
@@ -74,12 +84,7 @@
                     </div>
                 </div>
             </div>
-     
-     
-     
-     
         <ul class="challenges-list">
-
     </section>
     <div id="myModal">
       <div class="modal-content">
@@ -88,7 +93,6 @@
     </div>
     </div>
     <ul class="challenges-list">
-
   </section>
   <footer class="footer">
     <div class="footer-content">
@@ -128,20 +132,15 @@
       </div>
     </div>
   </footer>
- 
   <script type="module" src="main.js">
     document
       .querySelector(".main-nav-toggle")
       .addEventListener("click", () => {
         document.querySelector(".main-nav").classList.toggle("open");
       });
-
   </script>
-  <script src="src/modules/filterToggle.js">
-
-
+  <script type="module" src="src/modules/filterToggle.js">
   </script>
   <script type="module" src="src/modules/createTags.js"></script>
-
 </body>
 </html>
