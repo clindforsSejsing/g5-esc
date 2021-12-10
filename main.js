@@ -124,4 +124,5 @@ if (passedString == "onsite") {
 
   const inCludeOnLine = document.querySelector("#includeOnline");
   inCludeOnLine.click();
-}
+};
+

@@ -61,6 +61,7 @@ const bookingStepTwo = (title, minP, maxP, availableTimes, date, id) => {
   const nameInput = document.createElement("input");
   nameInput.setAttribute("type", "text");
   nameInput.setAttribute("id", "name");
+  nameInput.setAttribute("required", "");
   modalwrap.append(nameInput);
 
   const emailLabel = document.createElement("label");
@@ -71,7 +72,19 @@ const bookingStepTwo = (title, minP, maxP, availableTimes, date, id) => {
   const emailInput = document.createElement("input");
   emailInput.setAttribute("type", "email");
   emailInput.setAttribute("id", "email");
+  emailInput.setAttribute("required", "");
   modalwrap.append(emailInput);
+
+  const phoneLabel = document.createElement("label");
+  phoneLabel.setAttribute("for", "phone");
+  phoneLabel.textContent = "Phone number";
+  modalwrap.append(phoneLabel);
+
+  const phoneInput = document.createElement("input");
+  phoneInput.setAttribute("type", "tel");
+  phoneInput.setAttribute("id", "phone");
+  phoneInput.setAttribute("required", "");
+  modalwrap.append(phoneInput);
 
   const timeLabel = document.createElement("label");
   timeLabel.setAttribute("for", "time");
@@ -108,23 +121,33 @@ const bookingStepTwo = (title, minP, maxP, availableTimes, date, id) => {
   searchBtn.setAttribute("id", "searchTimes-btn");
   searchBtn.innerHTML = "Submit Booking";
   searchBtn.addEventListener("click", async () => {
-    const res = await fetch(
-      "https://lernia-sjj-assignments.vercel.app/api/booking/reservations",
-      {
-        method: "POST",
-        mode: "cors",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          id: id,
-          name: nameInput.value,
-          email: emailInput.value,
-          date: date,
-          time: timeList.value,
-          participants: parseInt(participantsList.value),
-        }),
-      }
-    );
-    bookingStepThree();
+    let validateName = nameInput.reportValidity();
+   let validateEmail = false;
+   let validatePhone = false;
+  if(validateName)
+   {
+    validateEmail = emailInput.reportValidity() && 
+    (validatePhone = phoneInput.reportValidity());
+   }
+    if(validateName && validateEmail)
+    {
+      const res = await fetch(
+        "https://lernia-sjj-assignments.vercel.app/api/booking/reservations",
+        {
+          method: "POST",
+          mode: "cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: nameInput.value,
+            email: emailInput.value,
+            date: date,
+            time: timeList.value,
+            participants: parseInt(participantsList.value),
+          }),
+        }
+      );
+      bookingStepThree();
+    }
   });
   modalwrap.append(searchBtn);
 };
@@ -145,7 +168,6 @@ const bookingStepThree = () => {
   returnLink.innerHTML = "Back to challenges";
   content.append(returnLink);
 };
-//inhämta data
 async function getTimeSlots(wantedDate) {
   const response = await fetch(
     "https://lernia-sjj-assignments.vercel.app/api/booking/available-times?date=" +
@@ -154,5 +176,12 @@ async function getTimeSlots(wantedDate) {
   const slotJson = await response.json();
   return slotJson.slots;
 }
+
+window.addEventListener("click", function (event) {
+  const logo = document.getElementById("logo");
+  if (event.target == logo) {
+    window.location.href = "index.html";
+  }});
+
 
 export { handleBooking };

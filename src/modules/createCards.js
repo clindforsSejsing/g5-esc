@@ -13,6 +13,10 @@ const createCards = (data) => {
   cardImg.src = `${data.image}`;
   cardItem.append(cardImg);
 
+  const cardIcon = document.createElement("div");
+  cardIcon.classList.add(`${data.type}`);
+  cardItem.append(cardIcon);
+  
   const cardTitle = document.createElement("h3");
   cardTitle.classList.add("challenge-title");
   cardTitle.innerHTML = `${data.title}(${data.type})`;
