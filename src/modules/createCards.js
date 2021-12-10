@@ -30,7 +30,6 @@ const createCards = (data) => {
   cardRating.classList.add("challenge-rating");
   cardMeta.append(cardRating);
 
-  
   /// function for creating star
   /// startype = "on", "half" or "off"
   const createStar = (startype) => {
@@ -38,20 +37,17 @@ const createCards = (data) => {
     ratingStar.classList.add("challenge-rating-star");
     ratingStar.classList.add(startype);
     cardRating.append(ratingStar);
-  }
+  };
   // check if halfstar is required
   let halfstar = !Number.isInteger(data.rating);
   for (let i = 0; i < 5; i++) {
-
     if (i < Math.floor(data.rating)) {
       createStar("on");
-
-    } else if (halfstar){
-        createStar("half");
-        halfstar = false;
-
+    } else if (halfstar) {
+      createStar("half");
+      halfstar = false;
     } else {
-        createStar("off");
+      createStar("off");
     }
   }
 
@@ -69,7 +65,12 @@ const createCards = (data) => {
   cardCta.classList.add("challenge-cta");
   cardCta.innerHTML = "Book this room";
   cardCta.addEventListener("click", () => {
-    handleBooking(data.title, data.minParticipants, data.maxParticipants);
+    handleBooking(
+      data.title,
+      data.minParticipants,
+      data.maxParticipants,
+      data.id
+    );
   });
   cardItem.append(cardCta);
 };

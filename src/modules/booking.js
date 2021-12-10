@@ -1,8 +1,8 @@
 const modal = document.getElementById("myModal");
 const modalwrap = document.querySelector(".modal-content");
 
-function handleBooking(title, minP, maxP) {
-  bookingStepOne(title, minP, maxP);
+function handleBooking(title, minP, maxP, id) {
+  bookingStepOne(title, minP, maxP, id);
 }
 window.addEventListener("click", function (event) {
   if (event.target == modal) {
@@ -10,7 +10,7 @@ window.addEventListener("click", function (event) {
   }
 });
 
-const bookingStepOne = (title, minP, maxP) => {
+const bookingStepOne = (title, minP, maxP, id) => {
   modal.style.display = "block";
   modalwrap.innerHTML = "";
 
@@ -40,12 +40,12 @@ const bookingStepOne = (title, minP, maxP) => {
   searchBtn.innerHTML = "Search available times";
   searchBtn.addEventListener("click", async function () {
     const availableTimes = await getTimeSlots(dateInput.value);
-    bookingStepTwo(title, minP, maxP, availableTimes, dateInput.value);
+    bookingStepTwo(title, minP, maxP, availableTimes, dateInput.value, id);
   });
   modalwrap.append(searchBtn);
 };
 
-const bookingStepTwo = (title, minP, maxP, availableTimes, date) => {
+const bookingStepTwo = (title, minP, maxP, availableTimes, date, id) => {
   modalwrap.innerHTML = "";
 
   const titelModal = document.createElement("h1");
