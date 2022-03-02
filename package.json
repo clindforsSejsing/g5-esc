@@ -1,14 +1,28 @@
 {
   "name": "02-esc-website",
   "version": "1.0.0",
-  "description": "",
+  "description": "forked from original team-project, with the intention of testing this repo with cypress.",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "watch": "sass --watch --no-source-map src/main.scss main.css"
+    "watch": "sass --watch --no-source-map src/main.scss main.css",
+    "cypress:open": "cypress open",
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "cypress": "^9.5.1",
     "sass": "^1.43.4"
-  }
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clindforsSejsing/g5-esc.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/clindforsSejsing/g5-esc/issues"
+  },
+  "homepage": "https://github.com/clindforsSejsing/g5-esc#readme"
 }
